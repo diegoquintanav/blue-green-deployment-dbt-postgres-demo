@@ -7,18 +7,18 @@ dbt_blue_green_demo:
       host: 0.0.0.0
       port: 5433
       user: postgres
-      pass: blue
-      dbname: db_blue
-      schema: my_schema
+      pass: password
+      dbname: my_postgres
+      schema: dbt_prod_blue
 
     green:
       type: postgres
       threads: 1
       host: 0.0.0.0
-      port: 5434
+      port: 5433
       user: postgres
-      password: green
-      schema: my_schema
-      dbname: db_green
+      password: password
+      schema: dbt_prod_green
+      dbname: my_postgres
 
   target: blue
