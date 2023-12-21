@@ -1,0 +1,34 @@
+---
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-yaml
+      - id: trailing-whitespace
+      - id: detect-private-key
+      - id: name-tests-test
+        args: ["--pytest-test-first"]
+  - repo: https://github.com/psf/black
+    rev: 23.7.0
+    hooks:
+      - id: black
+  - repo: local
+    hooks:
+    - id: pylint
+      name: pylint
+      entry: pylint
+      language: system
+      types: [python]
+  - repo: https://github.com/sqlfluff/sqlfluff
+    rev: 2.3.5
+    hooks:
+      - id: sqlfluff-fix
+        additional_dependencies: ["dbt-postgres", "sqlfluff-templater-dbt"]
+      - id: sqlfluff-lint
+        additional_dependencies: ["dbt-postgres", "sqlfluff-templater-dbt"]
+
+fail_fast: false
+files: ".*"
+exclude: "desktop.ini" # Windows
+default_language_version:
+  python: python3.10

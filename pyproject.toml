@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "blue-green-deployment-dbt-postgres-demo"
+version = "0.1.0"
+description = ""
+authors = ["Diego Quintana <daquintanav@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+dbt-postgres = "^1.7.4"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.12.0"
+pylint = "^3.0.3"
+pre-commit = "^3.6.0"
+sqlfluff-templater-dbt = "^2.3.5"
+sqlfluff = "^2.3.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

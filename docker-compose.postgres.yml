@@ -1,0 +1,38 @@
+version: "3.9"
+name: blue_green_demo
+
+services:
+  db_blue:
+    image: postgres:15
+    volumes:
+      - pgdata_blue:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD-blue}
+      POSTGRES_DB: ${POSTGRES_DB_BLUE-db_blue}
+    ports:
+      - 5433:5432
+    networks:
+      - default
+  db_green:
+    image: postgres:15
+    volumes:
+      - pgdata_green:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD-green}
+      POSTGRES_DB: ${POSTGRES_DB_GREEN-db_green}
+    ports:
+      - 5434:5432
+    networks:
+      - default
+
+volumes:
+  pgdata_blue:
+    driver: local
+  pgdata_green:
+    driver: local
+
+networks:
+  default:
+    driver: bridge

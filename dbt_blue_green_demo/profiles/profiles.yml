@@ -1,0 +1,24 @@
+---
+dbt_blue_green_demo:
+  outputs:
+    blue:
+      type: postgres
+      threads: 1
+      host: 0.0.0.0
+      port: 5433
+      user: postgres
+      pass: blue
+      dbname: db_blue
+      schema: my_schema
+
+    green:
+      type: postgres
+      threads: 1
+      host: 0.0.0.0
+      port: 5434
+      user: postgres
+      password: green
+      schema: my_schema
+      dbname: db_green
+
+  target: blue
